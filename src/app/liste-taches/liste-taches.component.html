@@ -50,7 +50,9 @@
                         <a href="#" class="ag-courses-item_link">
                             <div class="ag-courses-item_bg"></div>
                             <!-- Titre de la tâche -->
-                            <div class="ag-courses-item_title">
+                            <div class="ag-courses-item_title" [class.completed]="tache.completed">
+                                <!-- Case à cocher pour marquer la tâche comme terminée -->
+                                <input type="checkbox" (change)="toggleCompleted(tache)" [checked]="tache.completed">
                                 {{ tache.titre }}
                             </div>
                             <!-- Description de la tâche -->

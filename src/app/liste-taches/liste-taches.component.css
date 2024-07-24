@@ -134,6 +134,12 @@ form .form-row .textarea{
   position: relative;
   z-index: 2;
 }
+
+.completed {
+    text-decoration: line-through;
+    color: rgb(196, 7, 7);
+    
+  }
 @media (max-width: 700px) {
   .container .text{
     font-size: 30px;
