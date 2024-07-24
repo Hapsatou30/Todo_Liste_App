@@ -31,4 +31,13 @@ export class ListeTachesComponent {
   toggleCompleted(tache: { titre: string, description: string, completed: boolean }) {
     tache.completed = !tache.completed;
   }
+
+  // Propriétés calculées pour séparer les tâches terminées et non terminées
+  get tachesNonTerminees() {
+    return this.taches.filter(tache => !tache.completed);
+  }
+
+  get tachesTerminees() {
+    return this.taches.filter(tache => tache.completed);
+  }
 }
