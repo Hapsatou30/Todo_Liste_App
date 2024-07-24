@@ -44,53 +44,55 @@
 
         
         <div class="cartes">
-            <div class="ag-format-container">
+            <!-- Barre de recherche -->
+            <div class="search-container">
+                <input type="text" placeholder="Rechercher des tâches..." [(ngModel)]="searchTerm" />
+                <button type="submit">
+                </button>
+              </div>
+              
+              <div class="ag-format-container">
                 <h2>La liste de toutes les tâches</h2>
                 <div class="ag-courses_box">
-                    <!-- Boucle pour afficher chaque tâche non terminée sous forme de carte -->
-                    <div class="ag-courses_item" *ngFor="let tache of tachesNonTerminees">
-                        <a href="#" class="ag-courses-item_link">
-                            <div class="ag-courses-item_bg" [class.completed]="tache.completed"></div>
-                            <!-- Titre de la tâche -->
-                            <div class="ag-courses-item_title">
-                                <!-- Case à cocher pour marquer la tâche comme terminée -->
-                                <input type="checkbox" (change)="toggleCompleted(tache)" [checked]="tache.completed">
-                                {{ tache.titre }}
-                            </div>
-                            <!-- Description de la tâche -->
-                            <div class="ag-courses-item_date-box">
-                                Description:
-                                <span class="ag-courses-item_date">
-                                    {{ tache.description }}
-                                </span>
-                            </div>
-                        </a>
-                    </div>
+                  <!-- Boucle pour afficher les tâches non terminées -->
+                  <div class="ag-courses_item" *ngFor="let tache of filteredTachesNonTerminees()">
+                    <a href="#" class="ag-courses-item_link">
+                      <div class="ag-courses-item_bg" [class.completed]="tache.completed"></div>
+                      <div class="ag-courses-item_title" [class.completed]="tache.completed">
+                        <input type="checkbox" (change)="toggleCompleted(tache)" [checked]="tache.completed">
+                        {{ tache.titre }}
+                      </div>
+                      <div class="ag-courses-item_date-box">
+                        Description:
+                        <span class="ag-courses-item_date">
+                          {{ tache.description }}
+                        </span>
+                      </div>
+                    </a>
+                  </div>
                 </div>
+              
                 <h2>La liste des tâches terminées</h2>
                 <div class="ag-courses_box">
-                    <!-- Boucle pour afficher chaque tâche terminée sous forme de carte -->
-                    <div class="ag-courses_item" *ngFor="let tache of tachesTerminees">
-                        <a href="#" class="ag-courses-item_link">
-                            <div class="ag-courses-item_bg completed"></div>
-                            <!-- Titre de la tâche -->
-                            <div class="ag-courses-item_title">
-                                <!-- Case à cocher pour marquer la tâche comme terminée -->
-                                <input type="checkbox" (change)="toggleCompleted(tache)" [checked]="tache.completed">
-                                {{ tache.titre }}
-                            </div>
-                            <!-- Description de la tâche -->
-                            <div class="ag-courses-item_date-box">
-                                Description:
-                                <span class="ag-courses-item_date">
-                                    {{ tache.description }}
-                                </span>
-                            </div>
-                        </a>
-                    </div>
+                  <!-- Boucle pour afficher les tâches terminées -->
+                  <div class="ag-courses_item" *ngFor="let tache of filteredTachesTerminees()">
+                    <a href="#" class="ag-courses-item_link">
+                      <div class="ag-courses-item_bg completed"></div>
+                      <div class="ag-courses-item_title completed">
+                        <input type="checkbox" (change)="toggleCompleted(tache)" [checked]="tache.completed">
+                        {{ tache.titre }}
+                      </div>
+                      <div class="ag-courses-item_date-box">
+                        Description:
+                        <span class="ag-courses-item_date">
+                          {{ tache.description }}
+                        </span>
+                      </div>
+                    </a>
+                  </div>
                 </div>
+              </div>
             </div>
-        </div>
     </div>
 </body>
 </html>
